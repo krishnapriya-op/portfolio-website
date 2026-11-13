@@ -48,14 +48,6 @@ const Layout = ({ children }) => {
                                 Projects
                             </Link>
                         </li>
-                        <li>
-                            <Link 
-                                to="/ml-scratch" 
-                                className={location.pathname === '/ml-scratch' ? 'active' : ''}
-                            >
-                                ML from Scratch
-                            </Link>
-                        </li>
                     </ul>
                 </div>
             </nav>

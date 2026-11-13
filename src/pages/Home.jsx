@@ -20,14 +20,14 @@ const Home = () => {
         <>
             <div className="hero">
                 <div className="hero-content">
-                    <h1>Darshan Rajopadhye</h1>
-                    <p>Python | AI/ML & MLOps | Cloud & Scalable ML Systems</p>
+                    <h1>Krishnapriya N</h1>
+                    <p>Java | Robotics | Python | JavaScript</p>
                     <div className="hero-buttons">
                         <Link to="/projects" className="btn">View My Work</Link>
                         <Link to="/about" className="btn btn-secondary">About Me</Link>
                         <a 
                             href="/static/resume.pdf" 
-                            download="Darshan-Rajopadhye-Resume.pdf" 
+                            download="Krishnapriya-N-Resume.pdf" 
                             className="btn btn-resume"
                         >
                             Download Resume
@@ -42,23 +42,23 @@ const Home = () => {
                     <div className="skills-grid">
                         <div className="skill-card">
                             <div className="skill-icon">🧠</div>
-                            <h3>AI & ML</h3>
-                            <p>Model Development, Scikit-learn, PyTorch, NLP, Explainability (SHAP, LIME), Responsible AI</p>
+                            <h3>Robotics</h3>
+                            <p>ArduinoIDE, TinkerCad, Circuit Design</p>
                         </div>
                         <div className="skill-card">
                             <div className="skill-icon">🐍</div>
                             <h3>Python Engineering</h3>
-                            <p>Clean Code, API Design, FastAPI, Flask, Data Pipelines, Automation, Testing & Packaging</p>
+                            <p>Clean Code, Problem Solving</p>
                         </div>
                         <div className="skill-card">
                             <div className="skill-icon">🚀</div>
-                            <h3>MLOps & DevOps</h3>
-                            <p>Docker, DVC, CI/CD, Model Deployment, AWS, Kubernetes, Monitoring & Versioning</p>
+                            <h3>Java</h3>
+                            <p>Object-Oriented Programming, Java Collections, Documentation</p>
                         </div>
                         <div className="skill-card">
                             <div className="skill-icon">🗄️</div>
-                            <h3>Databases</h3>
-                            <p>PostgreSQL, MongoDB, Redis, Pinecone, Query Optimization, Data Modeling</p>
+                            <h3>JavaScript</h3>
+                            <p>React, Node.js, Express, HTML/CSS, Responsive Design</p>
                         </div>
                     </div>
                 </div>
