@@ -40,14 +40,6 @@ const Layout = ({ children }) => {
                                 About
                             </Link>
                         </li>
-                        <li>
-                            <Link 
-                                to="/projects" 
-                                className={location.pathname === '/projects' ? 'active' : ''}
-                            >
-                                Projects
-                            </Link>
-                        </li>
                     </ul>
                 </div>
             </nav>

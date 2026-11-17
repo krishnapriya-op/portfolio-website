@@ -163,86 +163,9 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/projects')
-def projects():
-    projects_data = get_projects()
-    
-    all_domains = set()
-    for project in projects_data:
-        all_domains.update(project.get('domains', []))
-    
-    print(f"🔧 Passing {len(projects_data)} projects to template")
-    print(f"🔧 Available domains: {sorted(list(all_domains))}")
-    print(f"🔧 Domain colors keys: {list(DOMAIN_COLORS.keys())}")
-    
-    return render_template('projects.html', 
-                         projects=projects_data, 
-                         domains=sorted(list(all_domains)),
-                         domain_colors=DOMAIN_COLORS)
-
-@app.route('/api/projects')
-def api_projects():
-    """API endpoint to get projects with optional filtering"""
-    projects_data = get_projects()
-    
-    domain_filter = request.args.get('domain')
-    
-    if domain_filter:
-        filtered_projects = []
-        for project in projects_data:
-            if domain_filter in project.get('domains', []):
-                filtered_projects.append(project)
-        projects_data = filtered_projects
-    
-    return jsonify({
-        'projects': projects_data,
-        'total': len(projects_data)
-    })
-
 @app.route('/ml-scratch')
 def ml_scratch():
     return render_template('ml_scratch.html')
-
-@app.route('/debug-projects')
-def debug_projects():
-    """Debug route to test project loading and domain detection"""
-    projects_data = get_projects()
-    
-    html = "<h1>Projects Debug</h1>"
-    html += f"<p><strong>Projects file:</strong> {PROJECTS_FILE}</p>"
-    html += f"<p><strong>File exists:</strong> {os.path.exists(PROJECTS_FILE)}</p>"
-    html += f"<p><strong>Projects found:</strong> {len(projects_data)}</p>"
-    
-    html += "<h2>Domain Mapping:</h2>"
-    for domain, techs in TECH_DOMAINS.items():
-        color = DOMAIN_COLORS.get(domain, '#666')
-        html += f"<p><span style='background: {color}; color: white; padding: 0.2rem 0.5rem; border-radius: 3px; margin-right: 0.5rem;'>{domain}</span> {', '.join(techs[:5])}{'...' if len(techs) > 5 else ''}</p>"
-    
-    html += "<hr>"
-    
-    if projects_data:
-        for i, project in enumerate(projects_data):
-            html += f"""
-            <div style="border: 1px solid #ccc; margin: 1rem 0; padding: 1rem;">
-                <h3>{i+1}. {project.get('title', 'Untitled')}</h3>
-                <p><strong>Technologies:</strong> {', '.join(project.get('technologies', []))}</p>
-                <p><strong>Duration:</strong> {project.get('duration', 'N/A')}</p>
-                <p><strong>Domains:</strong> 
-            """
-            for domain in project.get('domains', []):
-                color = DOMAIN_COLORS.get(domain, '#666')
-                html += f"<span style='background: {color}; color: white; padding: 0.2rem 0.5rem; border-radius: 3px; margin-right: 0.5rem;'>{domain}</span>"
-            
-            html += f"""</p>
-                <p><strong>Link:</strong> <a href="{project.get('link', '#')}">{project.get('link', 'No link')}</a></p>
-                <p><strong>Description Items:</strong> {len(project.get('description', []))}</p>
-            </div>
-            """
-    else:
-        html += "<p style='color: red;'>No projects found.</p>"
-    
-    html += f'<p><a href="/projects">← Back to Projects</a></p>'
-    return html
 
 if __name__ == '__main__':
     app.run(debug=True)

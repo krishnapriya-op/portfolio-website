@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../styles/About.css'
+import profileImage from '../../static/profile.png'
+import resumeFile from '../../static/resume.pdf'
 
 const About = () => {
     return (
@@ -17,12 +18,9 @@ const About = () => {
                         <p>Outside of core development, I actively follow advancements in AI research, contribute to open source, and enjoy breaking down complex topics through technical writing and experimentation. I'm a firm believer in continuous learning, collaboration, and building tools that empower others.</p>
 
                         <div style={{ marginTop: '2rem' }}>
-                            <Link to="/projects" className="btn" style={{ marginRight: '1rem' }}>
-                                View My Projects
-                            </Link>
                             <a 
-                                href="/static/resume.pdf" 
-                                download="Darshan-Rajopadhye-Resume.pdf" 
+                                href={resumeFile} 
+                                download="Krishnapriya-N-Resume.pdf" 
                                 className="btn btn-resume"
                             >
                                 Download Resume
@@ -32,7 +30,7 @@ const About = () => {
                     
                     <div className="about-image">
                         <div className="profile-pic">
-                            <img src="/static/profile.jpg" alt="Krishnapriya N" className="profile-image" />
+                            <img src={profileImage} alt="Krishnapriya N" className="profile-image" />
                         </div>
                     </div>
                 </div>
